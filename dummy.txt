@@ -1,0 +1,8 @@
+minta_naik = 5000
+minta_turun = 1000
+
+sedia_banyak = 600
+sedia_dikit = 100
+
+produksi_maks = 7000
+produksi_min = 2000

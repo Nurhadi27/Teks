@@ -1,0 +1,72 @@
+P(Y = Terima) = 245/421
+P(Y = Tolak) = 176/421
+
+P(Agama = 8 | Y = Terima) = 77/245
+P(Agama = 8 | Y = Tolak) = 30/176
+
+P(Rupa = 7 | Y = Terima) = 44/245
+P(Rupa = 7 | Y = Tolak) = 41/176
+
+P(Harta = 3 | Y = Terima) = 3/245
+P(Harta = 3 | Y = Tolak) = 8/176
+
+P(Pandai = 9 | Y = Terima) = 64/245
+P(Pandai = 9 | Y = Tolak) = 18/176
+
+P(Romantis = 4 | Y = Terima) = 11/245
+P(Romantis = 4 | Y = Tolak) = 13/176
+
+TERIMA = (77/245 * 44/245 * 3/245 * 64/245 * 11/245) = 0.000008106 
+TOLAK = (30/176 * 41/176 * 8/176 * 18/176 * 13/176) =  0.0000136347
+
+
+x = data[(data['Hasil[Terima/Tolak]']=='Terima')]
+y = data[(data['Hasil[Terima/Tolak]']=='Tolak')]
+Jum_x = len(x)
+Jum_y = len(y)
+print("Total Terima : ",Jum_x)
+print("Total Tolak  : ",Jum_y)
+
+print("\n\nInput Nilai Fulan\n\n")
+
+Input_agama = int(input("Agama [1-10]    : "))
+Input_rupa = int(input("Rupa [1-10]     : "))
+Input_harta = int(input("Harta [1-10]    : "))
+Input_pandai = int(input("Pandai [1-10]   : "))
+Input_romantis = int(input("Romantis [1-10] : "))
+
+Terima_agama = len(x[x['Agama[1-10]'] == Input_agama ])
+Tolak_agama = len(y[y['Agama[1-10]'] == Input_agama ])
+Terima_rupa = len(x[x['Rupa[1-10]'] == Input_rupa ])
+Tolak_rupa = len(y[y['Rupa[1-10]'] == Input_rupa ])
+Terima_harta = len(x[x['Harta[1-10]'] == Input_harta ])
+Tolak_harta = len(y[y['Harta[1-10]'] == Input_harta ])
+Terima_pandai = len(x[x['Pandai[1-10]'] == Input_pandai ])
+Tolak_pandai = len(y[y['Pandai[1-10]'] == Input_pandai ])
+Terima_romantis = len(x[x['Romantis[1-10]'] == Input_romantis ])
+Tolak_romantis = len(y[y['Romantis[1-10]'] == Input_romantis ])
+
+print("\n\nJumlah data yang diterima dengan nilai agama '",Input_agama,"'    : ",Terima_agama)
+print("Jumlah data yang ditolak dengan nilai agama '",Input_agama,"'     : ",Tolak_agama)
+print("\nJumlah data yang diterima dengan nilai rupa '",Input_rupa,"'     : ",Terima_rupa)
+print("Jumlah data yang ditolak dengan nilai rupa '",Input_rupa,"'      : ",Tolak_rupa)
+print("\nJumlah data yang diterima dengan nilai harta '",Input_harta,"'    : ",Terima_harta)
+print("Jumlah data yang ditolak dengan nilai harta '",Input_harta,"'     : ",Tolak_harta)
+print("\nJumlah data yang diterima dengan nilai pandai '",Input_pandai,"'   : ",Terima_pandai)
+print("Jumlah data yang ditolak dengan nilai pandai '",Input_pandai,"'    : ",Tolak_pandai)
+print("\nJumlah data yang diterima dengan nilai romantis '",Input_romantis,"' : ",Terima_romantis)
+print("Jumlah data yang ditolak dengan nilai romantis '",Input_romantis,"'  : ",Tolak_romantis)
+
+var_Terima = (Terima_agama/Jum_x)*(Terima_rupa/Jum_x)*(Terima_harta/Jum_x)*(Terima_pandai/Jum_x)*(Terima_romantis/Jum_x)
+var_Tolak = (Tolak_agama/Jum_y)*(Tolak_rupa/Jum_y)*(Tolak_harta/Jum_y)*(Tolak_pandai/Jum_y)*(Tolak_romantis/Jum_y)
+
+print("\nProbabilitas diterima : ",var_Terima)
+print("Probabilitas ditolak  : ",var_Tolak)
+
+print("\nMaka hasilnya")
+if var_Terima > var_Tolak :
+  print("\nFulan Diterima")
+elif var_Terima < var_Tolak :
+  print("\nFulan Ditolak")
+else :
+  print("\n50% Fulan Diterima")
